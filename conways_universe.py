@@ -56,9 +56,10 @@ class ConwaysGameOfLife:
             np.fromiter(map(self.population_control, np.ndenumerate(self.universe)), dtype=float)
             self.universe = np.copy(self.next_state)
 
-            cmap_ = sns.diverging_palette(250, 30, l=65, center="dark", as_cmap=True)
+            cmap_ = sns.diverging_palette(250, 30, s=80, l=55, n=9)
             sns.heatmap(game.universe, cmap = cmap_, xticklabels=False, yticklabels=False, linewidths=1, cbar=False, ax=ax)
             # ax.imshow(game.universe, cmap='Greys')
+            ax.set_title(f'Gen: {i}')
             plt.draw()
 
             plt.pause(0.01)
@@ -70,8 +71,8 @@ class ConwaysGameOfLife:
 
 
 if __name__ == '__main__':
-    game = ConwaysGameOfLife((50, 50), 0.3)
-    game.live(100)
+    game = ConwaysGameOfLife((25, 25), 0.75)
+    game.live(1000)
 
 
 
